@@ -29,5 +29,31 @@ verify_ssl = true
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "black<22,>=21.10b0",
+    "black<22,>=21.11b1",
+    "flake8~=4.0",
+    "pre-commit~=2.16",
 ]
+
+
+[tool.black]
+line-length = 99
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | foo.py           # also separately exclude a file named foo.py in
+                     # the root of the project
+)
+'''
